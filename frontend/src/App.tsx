@@ -4,6 +4,7 @@ import { Toaster } from "sonner";
 import { useEffect } from "react";
 import { checkUserLoginStatus } from "./features/auth/authThunk";
 import type { AppDispatch, RootState } from "./app/store";
+import Loading from "./components/ui/loading/Loading";
 const App = () => {
   const { sessionStatus } = useSelector((state: RootState) => state.auth);
   const dispatch: AppDispatch = useDispatch();
@@ -14,7 +15,7 @@ const App = () => {
   return (
     <>
       <Toaster />
-      {sessionStatus === "checking" ? <h1>Loading...</h1> : <Approutes />}
+      {sessionStatus === "checking" ? <Loading /> : <Approutes />}
     </>
   );
 };
